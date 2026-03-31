@@ -1,0 +1,7 @@
+import sqlite3
+
+connection = sqlite3.connect("warnings.db")
+cursor = connection.cursor()
+cursor.execute("DELETE FROM warnings WHERE rowid IN (SELECT rowid FROM warnings LIMIT 1 OFFSET 0);")
+connection.commit()
+connection.close()
